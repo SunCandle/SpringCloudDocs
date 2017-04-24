@@ -161,7 +161,17 @@ public class Application {
 ```
 #### @SpringCloudApplication
 > 它整合了@SpringBootApplication、@EnableDiscoveryClient、@EnableCircuitBreaker，主要目的还是简化配置。
-
+#### @EnableAuthorizationServer
+> spring Cloud Security
+```
+@SpringBootApplication
+@EnableAuthorizationServer
+public class AlanOAuthApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(AlanOAuthApplication.class, args);
+    }
+}
+```
 
 # 声明Bean的注解:
 - @Component : 组件,没有明确的角色

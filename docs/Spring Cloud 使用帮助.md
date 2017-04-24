@@ -634,3 +634,39 @@ public class Application {
 	}
 }
 ```
+# 使用Spring Cloud Security OAuth2搭建授权服务
+> spring Cloud Security OAuth2 是 Spring 对 OAuth2 的开源实现，优点是能与Spring Cloud技术栈无缝集成，如果全部使用默认配置，开发者只需要添加注解就能完成 OAuth2 授权服务的搭建。
+####　pom.xml
+```
+<dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-security</artifactId>
+</dependency>
+
+<dependency>
+         <groupId>org.springframework.cloud</groupId>
+         <artifactId>spring-cloud-starter-oauth2</artifactId>
+ </dependency>
+```
+#### Application @EnableAuthorizationServer
+```
+@SpringBootApplication
+@EnableAuthorizationServer
+public class AlanOAuthApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(AlanOAuthApplication.class, args);
+    }
+}
+```
+### 分配 client_id, client_secret
+> Spring Security OAuth2的配置方法是编写@Configuration类继承AuthorizationServerConfigurerAdapter，然后重写void configure(ClientDetailsServiceConfigurer clients)方法
+```
+@Override
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        clients.inMemory() // 使用in-memory存储
+                .withClient("client") // client_id
+                .secret("secret") // client_secret
+                .authorizedGrantTypes("authorization_code") // 该client允许的授权类型
+                .scopes("app"); // 允许的授权范围
+    }
+```
