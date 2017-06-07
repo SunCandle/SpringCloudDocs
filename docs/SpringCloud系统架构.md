@@ -30,3 +30,5 @@ Spring Cloud Netflix项目的时间还不长，并入Spring Cloud大家族还是
 
 下面就是使用上述的子框架实现的为服务架构的组架构图：
 ![image](https://user-images.githubusercontent.com/11325103/26866724-04172992-4b95-11e7-9271-486465af3221.png)
+
+![image](https://user-images.githubusercontent.com/11325103/26866853-8f35dafa-4b95-11e7-9095-c52c196853d2.png)
